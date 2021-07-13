@@ -4,15 +4,21 @@
 
 1. ### Resource:
 
-   A *Resource* represents a JSON-serializable object that can be retrieved in responses from the API server.
+   A *Resource* represents a JSON-serializable object that can be retrieved in *response*s from the API server.
 
 1. ### Client:
 
-   A *Client* is responsible for querying all *resource* *endpoint*s, and returning responses from the API server.
+   A *Client* is responsible for querying all *resource* *endpoint*s, and returning *response*s from the API server.
 
 1. ### Endpoint
 
-   An *Endpoint* is a queryable path exposed by the API server, that returns a response. In *Hapi*, an endpoint represents a single resource endpoint, with methods that operate on its individual sub-endpoints.
+   An *Endpoint* is a queryable path exposed by the API server, that returns a *response*. In *Hapi*, an endpoint represents a single resource endpoint, with methods that operate on its individual sub-endpoints.
+
+1. ### Response:
+
+   A *Response* is *Hapi*'s representation of the raw response body received from the API server. It is a type-safe wrapper around the JSON response object.
+
+   A *Response* may be an *Item* (a single resource object), or a *List* (an array of resource objects)
 
 ## Usage
 
