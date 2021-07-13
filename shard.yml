@@ -1,0 +1,14 @@
+name: hapi
+version: 0.1.0
+description: A low-level API client architecture
+
+authors:
+  - GrottoPress <info@grottopress.com>
+  - N Atta Kusi Adusei
+
+crystal: ~> 1.0
+
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    version: ~> 0.14.0
