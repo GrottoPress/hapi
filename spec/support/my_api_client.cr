@@ -6,7 +6,7 @@ class MyApiClient
   end
 
   def some_resources
-    @some_resource ||= SomeResource::Endpoint.new(self)
+    @some_resources ||= SomeResource::Endpoint.new(self)
   end
 
   def self.uri : URI
