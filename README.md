@@ -24,6 +24,14 @@
 
 See `spec/support/` directory of this repository for example usage.
 
+## Example Projects
+
+The following *Crystal* libraries use *Hapi*:
+
+- [Cryflare](https://github.com/GrottoPress/cryflare)
+- [Haystack](https://github.com/GrottoPress/haystack)
+- [Lester](https://github.com/GrottoPress/lester)
+
 ## Development
 
 Run specs with `crystal spec`.
