@@ -5,7 +5,7 @@ describe Hapi do
     string = "Hello, World!"
     integer = 500000
 
-    response_json = IO::Memory.new <<-JSON
+    body = <<-JSON
       {
         "success": true,
         "message": "Resource created",
@@ -18,7 +18,7 @@ describe Hapi do
 
     WebMock.stub(:post, "https://api.example.com/some-path/some-resource")
       .with(body: %({"string":"#{string}","integer":#{integer}}))
-      .to_return(body_io: response_json)
+      .to_return(body: body)
 
     client = MyApiClient.new(token: "abcdef")
 
@@ -32,7 +32,7 @@ describe Hapi do
   end
 
   it "lists resources" do
-    response_json = IO::Memory.new <<-JSON
+    body = <<-JSON
       {
         "success": true,
         "message": "Resources found",
@@ -45,7 +45,7 @@ describe Hapi do
 
     WebMock.stub(:get, "https://api.example.com/some-path/some-resource")
       .with(query: {"count" => "10","page" => "3"})
-      .to_return(body_io: response_json)
+      .to_return(body: body)
 
     client = MyApiClient.new(token: "abcdef")
 
@@ -56,7 +56,7 @@ describe Hapi do
   end
 
   it "fetches resource" do
-    response_json = IO::Memory.new <<-JSON
+    body = <<-JSON
       {
         "success": true,
         "message": "Resource found",
@@ -68,7 +68,7 @@ describe Hapi do
       JSON
 
     WebMock.stub(:get, "https://api.example.com/some-path/some-resource/123")
-      .to_return(body_io: response_json)
+      .to_return(body: body)
 
     client = MyApiClient.new(token: "abcdef")
 
