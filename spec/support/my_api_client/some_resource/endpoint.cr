@@ -6,9 +6,8 @@ struct MyApiClient::SomeResource::Endpoint
   end
 
   def create(**params)
-    @client.post(self.class.uri.path, body: params.to_json) do |response|
-      Item.new(response)
-    end
+    response = @client.post(self.class.uri.path, body: params.to_json)
+    Item.new(response)
   end
 
   def list(**params)
@@ -16,11 +15,11 @@ struct MyApiClient::SomeResource::Endpoint
   end
 
   def list(**params)
-    @client.get(
+    response = @client.get(
       "#{self.class.uri.path}?#{URI::Params.encode(params)}"
-    ) do |response|
-      List.new(response)
-    end
+    )
+
+    List.new(response)
   end
 
   def fetch(id : Int)
@@ -28,9 +27,8 @@ struct MyApiClient::SomeResource::Endpoint
   end
 
   def fetch(id : Int)
-    @client.get("#{self.class.uri.path}/#{id}") do |response|
-      Item.new(response)
-    end
+    response = @client.get("#{self.class.uri.path}/#{id}")
+    Item.new(response)
   end
 
   def self.uri
