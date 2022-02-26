@@ -7,8 +7,7 @@ struct MyApiClient::SomeResource::Endpoint
 
   def create(**params)
     @client.post(self.class.uri.path, body: params.to_json) do |response|
-      # raise Error.from_json(response.body_io) unless response.status.success?
-      Item.from_json(response.body_io)
+      Item.new(response)
     end
   end
 
@@ -20,8 +19,7 @@ struct MyApiClient::SomeResource::Endpoint
     @client.get(
       "#{self.class.uri.path}?#{URI::Params.encode(params)}"
     ) do |response|
-      # raise Error.from_json(response.body_io) unless response.status.success?
-      List.from_json(response.body_io)
+      List.new(response)
     end
   end
 
@@ -31,8 +29,7 @@ struct MyApiClient::SomeResource::Endpoint
 
   def fetch(id : Int)
     @client.get("#{self.class.uri.path}/#{id}") do |response|
-      # raise Error.from_json(response.body_io) unless response.status.success?
-      Item.from_json(response.body_io)
+      Item.new(response)
     end
   end
 

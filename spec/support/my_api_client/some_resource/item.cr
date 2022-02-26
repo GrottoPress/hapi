@@ -1,5 +1,7 @@
 struct MyApiClient::SomeResource::Item
   include Response
 
-  getter data : SomeResource?
+  struct Resource
+    getter data : SomeResource?
+  end
 end
